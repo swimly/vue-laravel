@@ -1,42 +1,63 @@
 <template>
   <div>
-    <my-catory :data="catory" class="mid-layout"></my-catory>
-    <ul class="grid view mid-layout">
-      <li v-for="item in list" class="grid-5 grid-item">
-        <my-item :data="item"></my-item>
-      </li>
-    </ul>
+    <div class="mid-layout grid">
+      <div class="grid-item v-t w-80 pr-20 content">
+        <ul class="grid view w">
+          <li v-for="item in list" class="grid-5 grid-item">
+            <my-item :data="item"></my-item>
+          </li>
+        </ul>
+      </div>
+      <div class="grid-item v-t w-20">
+        <h2 class="module-title"><span>文章分类</span></h2>
+        <my-catory :data="catory" class="vertical"></my-catory>
+        <h2 class="module-title"><span>友情链接</span></h2>
+      </div>
+    </div>
     <my-footer></my-footer>
   </div>
 </template>
 <script>
+import api from '../api'
 export default {
   name: 'articles',
   data () {
     return {
       catory: [{
         text: '全部',
+        catory: 'all',
+        num: 0,
         icon: '',
         url: {name: 'articleall'}
       }, {
         text: '视觉设计',
-        icon: '',
+        catory: 'visual',
+        num: 0,
+        icon: 'icon-visual',
         url: {name: 'articlevisual'}
       }, {
         text: '团队活动',
-        icon: '',
+        catory: 'group',
+        num: 0,
+        icon: 'icon-group',
         url: {name: 'articlegroup'}
       }, {
         text: '前端技术',
-        icon: '',
+        catory: 'web',
+        num: 0,
+        icon: 'icon-h5',
         url: {name: 'articleweb'}
       }, {
         text: '交互设计',
-        icon: '',
+        catory: 'mutual',
+        num: 0,
+        icon: 'icon-jiaohu',
         url: {name: 'articlemutual'}
       }, {
         text: '闲话杂谈',
-        icon: '',
+        catory: 'chat',
+        num: 0,
+        icon: 'icon-chat',
         url: {name: 'articlechat'}
       }],
       list: []
@@ -48,14 +69,7 @@ export default {
     'my-footer': require('@/components/Footer')
   },
   created () {
-    this.$http.jsonp('http://localhost:8000/articles', {
-      params: {
-        id: 1
-      }
-    }).then(res => {
-      this.list = res.body
-      console.log(res)
-    })
+    api.articles(this)
   }
 }
 </script>

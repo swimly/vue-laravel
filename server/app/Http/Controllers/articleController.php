@@ -19,4 +19,9 @@ class articleController extends Controller
         $projects = Article::find($id);
         return $jsonp.'('.$projects.')';
     }
+    public function groups(Request $request) {
+        $jsonp = $request->callback;
+        $result = Article::all()->groupBy('router');
+        return $jsonp.'('.$result.')';
+    }
 }

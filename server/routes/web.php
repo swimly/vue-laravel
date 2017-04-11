@@ -16,8 +16,10 @@ Route::get('/', function () {
 });
 Route::get('/projects', 'projectController@list');
 Route::get('/project', 'projectController@info');
+Route::get('/projects/groups', 'projectController@groups');
 Route::get('/articles', 'articleController@list');
 Route::get('/article', 'articleController@info');
+Route::get('/articles/groups', 'articleController@groups');
 Route::get('/users', 'userController@list');
 Route::get('/signUp', 'userController@signUp');
 Route::get('/signIn', 'userController@signIn');

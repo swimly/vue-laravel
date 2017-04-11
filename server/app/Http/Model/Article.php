@@ -16,7 +16,7 @@ class article extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'catory', 'title',"author","content","time","tag","views"
+        'id', 'catory', 'title',"author","content","time","tag","views","router"
     ];
     protected $table = 'articles';
     public $timestamps = false;

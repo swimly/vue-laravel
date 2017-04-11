@@ -19,4 +19,9 @@ class projectController extends Controller
         $projects = Project::find($id);
         return $jsonp.'('.$projects.')';
     }
+    public function groups(Request $request) {
+        $jsonp = $request->callback;
+        $result = Project::all()->groupBy('router');
+        return $jsonp.'('.$result.')';
+    }
 }

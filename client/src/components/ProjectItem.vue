@@ -3,7 +3,7 @@
     <dt><img src="static/img/img1.jpg" alt=""></dt>
     <dd>
       <h2><router-link :to="/projects/+data.id">{{data.title}}</router-link></h2>
-      <p><span class="tag" style="background:#FF7070;">{{data.catory}}</span></p>
+      <p><span :class="'tag ' + data.router">{{data.catory}}</span></p>
       <p class="row w">
         <span class="col v-m time">{{data.time}}</span>
         <span class="col v-m t-r">

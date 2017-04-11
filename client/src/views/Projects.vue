@@ -10,38 +10,52 @@
   </div>
 </template>
 <script>
+import api from '../api'
 export default {
   name: 'navigation',
   data () {
     return {
-      demo: '',
       catory: [{
         text: '全部',
+        catory: 'all',
         icon: '',
+        num: 0,
         url: {name: 'projectall'}
       }, {
         text: '系统',
-        icon: '',
+        catory: 'system',
+        icon: 'icon-system',
+        num: 0,
         url: {name: 'projectsystem'}
       }, {
         text: '移动',
-        icon: '',
+        catory: 'app',
+        icon: 'icon-phone',
+        num: 0,
         url: {name: 'projectapp'}
       }, {
         text: '网站',
-        icon: '',
+        catory: 'web',
+        icon: 'icon-website',
+        num: 0,
         url: {name: 'projectweb'}
       }, {
         text: '纸面',
-        icon: '',
+        catory: 'pdf',
+        icon: 'icon-pdf',
+        num: 0,
         url: {name: 'projectpdf'}
       }, {
         text: '动画',
-        icon: '',
+        catory: 'swf',
+        icon: 'icon-flash',
+        num: 0,
         url: {name: 'projectswf'}
       }, {
         text: '视频',
-        icon: '',
+        catory: 'video',
+        icon: 'icon-video',
+        num: 0,
         url: {name: 'projectvideo'}
       }],
       list: []
@@ -53,14 +67,7 @@ export default {
     'my-footer': require('@/components/Footer')
   },
   created () {
-    this.$http.jsonp('http://localhost:8000/projects', {
-      params: {
-        id: 1
-      }
-    }).then(res => {
-      this.list = res.body
-      console.log(res)
-    })
+    api.projects(this)
   }
 }
 </script>

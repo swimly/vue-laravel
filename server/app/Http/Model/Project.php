@@ -15,7 +15,7 @@ class Project extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'catory', 'title',"author","cover","github","preview","view","content","time","tag"
+        'id', 'catory', 'title',"author","cover","github","preview","view","content","time","tag","router"
     ];
     protected $table = 'projects';
     public $timestamps = false;
