@@ -11,7 +11,7 @@ a{text-decoration:none;}
 .mid-layout{width:1300px;margin:0 auto;}
 .banner{background:url(./../img/header_bg.jpg) no-repeat center top;background-size:100% 100%;color:#fff;}
 .page{height:100%;}
-.header{position:fixed;top:0;left:0;width:100%;}
+.header{position:fixed;top:0;left:0;width:100%;z-index:100;}
 .logo{width:150px;height:80px;background:url(../img/logo.png) no-repeat center top;}
 .nav a{text-decoration:none;color:#fff;font-size:14px;margin:0;position:relative;display:inline-block;height:50px;line-height:50px;padding:0 1em;}
 .nav .router-link-active{background:rgba(0,0,0,0.1)}
@@ -51,3 +51,20 @@ a{text-decoration:none;}
 .vertical .icon-chat{color:#AB80ED;}
 .module-title{font-weight:normal;margin:0;font-size:16px;color:#444;padding-left:10px;margin-bottom:10px;border-bottom:1px solid #f5f5f5;}
 .module-title span{display:inline-block;border-bottom:2px solid #E82954;padding:0 10px 10px;position:relative;top:1px;margin-left:-10px;}
+.content:after{content:"";display:inline-block;width:1px;height:100%;background:#eee;position:absolute;right:10px;top:0;}
+.num{font-family:"capsuula";}
+.catory .num{font-size:20px;width:20px;text-align:center;}
+
+
+@font-face {
+    font-family: "capsuula";
+    src: url("../fonts/Capsuula.eot"); /* IE9 */
+    src: url("../fonts/Capsuula.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+
+    url("../fonts/Capsuula.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/Capsuula.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+
+    url("../fonts/Capsuula.svg#方正兰亭纤黑") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}

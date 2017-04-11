@@ -2,7 +2,7 @@
   <div>
     <my-catory :data="catory" class="mid-layout"></my-catory>
     <ul class="grid view mid-layout">
-      <li v-for="item in list" class="grid-5 grid-item">
+      <li v-for="(item, index) in list" :key="index" class="grid-5 grid-item">
         <my-item :data="item"></my-item>
       </li>
     </ul>

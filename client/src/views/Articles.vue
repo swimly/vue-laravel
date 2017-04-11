@@ -2,11 +2,7 @@
   <div>
     <div class="mid-layout grid">
       <div class="grid-item v-t w-80 pr-20 content">
-        <ul class="grid view w">
-          <li v-for="item in list" class="grid-5 grid-item">
-            <my-item :data="item"></my-item>
-          </li>
-        </ul>
+        <my-item :data="item" v-for="(item, index) in list" :key="index"></my-item>
       </div>
       <div class="grid-item v-t w-20">
         <h2 class="module-title"><span>文章分类</span></h2>
