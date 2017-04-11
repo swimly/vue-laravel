@@ -13,4 +13,10 @@ class projectController extends Controller
         $projects = Project::all();
         return $jsonp.'('.$projects.')';
     }
+    public function info(Request $request) {
+        $jsonp = $request->callback;
+        $id = $request->id;
+        $projects = Project::find($id);
+        return $jsonp.'('.$projects.')';
+    }
 }

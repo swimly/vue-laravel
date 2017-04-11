@@ -18,7 +18,7 @@ class article extends Model
     protected $fillable = [
         'id', 'catory', 'title',"author","content","time","tag","views"
     ];
-    protected $table = 'projects';
+    protected $table = 'articles';
     public $timestamps = false;
     /**
      * The attributes that should be hidden for arrays.

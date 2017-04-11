@@ -11,49 +11,44 @@
 </template>
 <script>
 export default {
-  name: 'navigation',
+  name: 'articles',
   data () {
     return {
-      demo: '',
       catory: [{
         text: '全部',
         icon: '',
-        url: {name: 'projectall'}
+        url: {name: 'articleall'}
       }, {
-        text: '系统',
+        text: '视觉设计',
         icon: '',
-        url: {name: 'projectsystem'}
+        url: {name: 'articlevisual'}
       }, {
-        text: '移动',
+        text: '团队活动',
         icon: '',
-        url: {name: 'projectapp'}
+        url: {name: 'articlegroup'}
       }, {
-        text: '网站',
+        text: '前端技术',
         icon: '',
-        url: {name: 'projectweb'}
+        url: {name: 'articleweb'}
       }, {
-        text: '纸面',
+        text: '交互设计',
         icon: '',
-        url: {name: 'projectpdf'}
+        url: {name: 'articlemutual'}
       }, {
-        text: '动画',
+        text: '闲话杂谈',
         icon: '',
-        url: {name: 'projectswf'}
-      }, {
-        text: '视频',
-        icon: '',
-        url: {name: 'projectvideo'}
+        url: {name: 'articlechat'}
       }],
       list: []
     }
   },
   components: {
-    'my-item': require('@/components/ProjectItem'),
+    'my-item': require('@/components/ArticleItem'),
     'my-catory': require('@/components/Catory'),
     'my-footer': require('@/components/Footer')
   },
   created () {
-    this.$http.jsonp('http://localhost:8000/projects', {
+    this.$http.jsonp('http://localhost:8000/articles', {
       params: {
         id: 1
       }

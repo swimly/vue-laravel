@@ -13,4 +13,10 @@ class articleController extends Controller
         $projects = Article::all();
         return $jsonp.'('.$projects.')';
     }
+    public function info(Request $request) {
+        $jsonp = $request->callback;
+        $id = $request->id;
+        $projects = Article::find($id);
+        return $jsonp.'('.$projects.')';
+    }
 }

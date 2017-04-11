@@ -1,7 +1,7 @@
 <template>
   <div class="page sub">
     <my-header></my-header>
-    <router-view name="nav" class="nav-content mid-layout"></router-view>
+    <router-view name="nav" class="nav-content"></router-view>
   </div>
 </template>
 <script>
