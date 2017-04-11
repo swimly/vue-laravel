@@ -10,6 +10,12 @@ export default new Router({
     name: 'main',
     component: require('@/views/Navigation'),
     children: [{
+      path: '/signIn',
+      name: 'signIn',
+      components: {
+        nav: require('@/views/SignIn')
+      }
+    }, {
       path: '/projects',
       name: 'projects',
       redirect: '/projects/all',

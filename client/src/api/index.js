@@ -1,4 +1,17 @@
 export default {
+  signIn (_this, fn) {
+    _this.$http.jsonp('http://localhost:8000/signUp', {
+      params: {
+        callback: 'jsonp',
+        username: _this.form.username,
+        password: _this.form.password
+      }
+    }).then(res => {
+      if (res.body) {
+        fn(_this)
+      }
+    })
+  },
   projects (_this) {
     _this.$http.jsonp('http://localhost:8000/projects', {
       params: {

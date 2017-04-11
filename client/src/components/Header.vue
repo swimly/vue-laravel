@@ -10,16 +10,25 @@
         <router-link to="/contact">联系</router-link>
       </div>
       <div class="col v-m user">
-        <router-link to="/aboutUs" class="iconfont icon-signup"></router-link>
-        <router-link to="/contact" class="iconfont icon-signin"></router-link>
+        <router-link v-if="!logined" title="登录" to="/signIn" class="iconfont icon-signup"></router-link>
+        <dl class="user" v-if="logined">
+          <dt><img :src="userInfo.face" alt="">{{userInfo.name}}</dt>
+        </dl>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
-  name: 'header'
+  name: 'header',
+  computed: {
+    ...mapGetters({
+      logined: 'logined',
+      userInfo: 'userInfo'
+    })
+  }
 }
 </script>
 
