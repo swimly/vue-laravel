@@ -9,5 +9,5 @@
   }
 </script>
 <style>
-.footer{background:#414858;padding:50px 0;font-size:12px;color:#8a91a0;text-align:center;}
+.footer{background:#414858;padding:50px 0;font-size:12px;color:#8a91a0;text-align:center;margin-top:20px;}
 </style>

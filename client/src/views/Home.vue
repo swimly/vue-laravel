@@ -13,7 +13,6 @@
         </div>
       </div>
     </div>
-    <div class="page bg-gray"></div>
   </div>
 </template>
 <script>

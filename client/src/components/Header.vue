@@ -53,8 +53,9 @@ export default {
 .user{width:20%;position:relative;}
 .user dt{font-size:14px;color:#fff;}
 .user dt img{margin-right:10px;border-radius:50%;width:30px;height:30px;border:none;}
-.user dd{position:absolute;top:50px;right:-20px;background:#fff;width:60%;padding:10px;border:1px solid #E0E0E0;border-radius:5px;box-shadow:0 1px 4px #ccc;}
+.user dd{position:absolute;top:50px;right:-20px;background:#fff;width:60%;padding:10px;border:1px solid #E0E0E0;border-radius:5px;box-shadow:0 1px 4px #ccc;display:none;}
 .user dd a{color:#84889E;font-size:14px;display:block;text-align:left;padding:10px;border-top:1px solid #F5F5F5;transition:0.3s;}
 .user dd a:first-child{border:none;}
 .user dd a:hover{color:#E82954;}
+.user:hover dd{display:block;}
 </style>
