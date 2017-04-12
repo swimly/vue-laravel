@@ -40,6 +40,7 @@ a{text-decoration:none;}
 .catory.vertical a span{display:table-cell;}
 .catory.vertical a:first-child{display:none;}
 .catory.vertical .iconfont{font-size:24px;width:35px;}
+.catory.vertical .num{position:static;}
 .catory .router-link-active{background:#5E6273;color:#fff;}
 .catory.vertical .router-link-active{background:#F9F9F9;color:#a2a5ae;}
 .view{min-height:80vh;}
