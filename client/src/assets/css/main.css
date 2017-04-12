@@ -13,7 +13,8 @@ a{text-decoration:none;}
 .banner{background:url(./../img/header_bg.jpg) no-repeat center top;background-size:100% 100%;color:#fff;}
 .page{height:100%;}
 .header{position:fixed;top:0;left:0;width:100%;z-index:100;}
-.logo{width:150px;height:80px;background:url(../img/logo.png) no-repeat center top;}
+.logo{width:15%;height:80px;background:url(../img/logo.png) no-repeat center top;}
+.nav{width:65%;}
 .nav a{text-decoration:none;color:#fff;font-size:14px;margin:0;position:relative;display:inline-block;height:50px;line-height:50px;padding:0 1em;}
 .nav .router-link-active{background:rgba(0,0,0,0.1)}
 .user a{font-size:24px;color:#fff;}
@@ -36,7 +37,7 @@ a{text-decoration:none;}
 .catory.vertical a span{display:table-cell;}
 .catory.vertical a:first-child{display:none;}
 .catory.vertical .iconfont{font-size:24px;width:35px;}
-.catory .router-link-active{background:#E82954;color:#fff;}
+.catory .router-link-active{background:#5E6273;color:#fff;}
 .catory.vertical .router-link-active{background:#F9F9F9;color:#a2a5ae;}
 .view{min-height:80vh;}
 .tag.web{background:#F77A5B;}

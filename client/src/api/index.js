@@ -9,6 +9,18 @@ export default {
     }).then(res => {
       if (res.body) {
         fn(_this)
+        _this.$http.jsonp('http://localhost:8000/users/' + _this.form.username, {
+          params: {
+            callback: 'jsonp'
+          }
+        }).then(res => {
+          localStorage.setItem('username', _this.form.username)
+          localStorage.setItem('face', res.body.face)
+          localStorage.setItem('logined', true)
+          _this.$router.push('/home')
+        })
+      } else {
+        console.log('用户名或者密码有误')
       }
     })
   },

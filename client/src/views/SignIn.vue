@@ -17,8 +17,8 @@
     data () {
       return {
         form: {
-          username: '',
-          password: ''
+          username: 'liuyong',
+          password: '122514'
         }
       }
     },
@@ -27,7 +27,7 @@
         api.signIn(this, function (_this) {
           _this.signIn({
             logined: true,
-            name: _this.username
+            name: _this.form.username
           })
         })
       },

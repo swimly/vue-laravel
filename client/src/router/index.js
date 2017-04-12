@@ -16,6 +16,12 @@ export default new Router({
         nav: require('@/views/SignIn')
       }
     }, {
+      path: '/logout',
+      name: 'logout',
+      components: {
+        nav: require('@/views/Logout')
+      }
+    }, {
       path: '/projects',
       name: 'projects',
       redirect: '/projects/all',

@@ -21,5 +21,6 @@ Route::get('/articles', 'articleController@list');
 Route::get('/article', 'articleController@info');
 Route::get('/articles/groups', 'articleController@groups');
 Route::get('/users', 'userController@list');
+Route::get('/users/{name}', 'userController@info');
 Route::get('/signUp', 'userController@signUp');
 Route::get('/signIn', 'userController@signIn');

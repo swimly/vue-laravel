@@ -13,6 +13,11 @@ class userController extends Controller
         $projects = User::all();
         return $jsonp.'('.$projects.')';
     }
+    public function info(Request $request, $name) {
+        $jsonp = $request->callback;
+        $user = User::where('name', $name)->first();
+        return $jsonp.'('.$user.')';
+    }
     public function signUp(Request $request) {
         $jsonp = $request->callback;
         $username = $request->username;
