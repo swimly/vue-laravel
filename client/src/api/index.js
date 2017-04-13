@@ -40,7 +40,7 @@ export default {
         callback: 'jsonp'
       }
     }).then(res => {
-      _this.list = res.body
+      _this.getList(res.body)
       this.group(_this, 'http://localhost:8000/articles/groups')
     })
   },
