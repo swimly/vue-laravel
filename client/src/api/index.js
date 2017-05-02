@@ -31,16 +31,28 @@ export default {
       console.log(error)
     })
   },
-  projects (_this) {
+  projects (_this, params) {
     const type = _this.$route.params.type
     console.log(type)
-    axios.get('http://192.168.4.151/vue-laravel/server/public/projects', {
-      params: {
+    var p
+    if (params) {
+      p = params
+    } else {
+      p = {
         catory: type
       }
+    }
+    axios.get('http://192.168.4.151/vue-laravel/server/public/projects', {
+      params: p
     })
     .then(function (res) {
-      _this.projectList(res.data.data)
+      if (res.data.data.length > 0) {
+        _this.projectList(res.data.data)
+        _this.isNull(false)
+      } else {
+        _this.projectList([])
+        _this.isNull(true)
+      }
     })
     .catch(function (error) {
       console.log(error)

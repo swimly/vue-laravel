@@ -8,11 +8,12 @@
         <my-search></my-search>
       </div>
     </div>
-    <ul class="grid view mid-layout">
+    <ul class="grid view mid-layout" v-if="!isnull">
       <li v-for="(item, index) in list" :key="index" class="grid-5 grid-item">
         <my-item :data="item"></my-item>
       </li>
     </ul>
+    <my-null v-if="isnull"></my-null>
     <my-footer></my-footer>
   </div>
 </template>
@@ -22,13 +23,15 @@ import {mapGetters, mapActions, mapMutations} from 'vuex'
 export default {
   name: 'navigation',
   data () {
-    return {}
+    return {
+    }
   },
   components: {
     'my-item': require('@/components/ProjectItem'),
     'my-catory': require('@/components/Catory'),
     'my-footer': require('@/components/Footer'),
-    'my-search': require('@/components/Search')
+    'my-search': require('@/components/Search'),
+    'my-null': require('@/components/null')
   },
   created () {
     api.projects(this)
@@ -36,15 +39,23 @@ export default {
   computed: {
     ...mapGetters({
       catory: 'pcatory',
-      list: 'Projectlist'
+      list: 'Projectlist',
+      isnull: 'isnull'
     })
   },
   methods: {
+    recatory () {
+      api.projects(this)
+    },
     ...mapActions({
-      projectList: 'projectlist'
+      projectList: 'projectlist',
+      isNull: 'isnull'
     }),
     ...mapMutations({
     })
+  },
+  watch: {
+    '$route': 'recatory'
   }
 }
 </script>

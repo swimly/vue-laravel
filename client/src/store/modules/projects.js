@@ -1,10 +1,15 @@
 import config from '../../config'
+// import axios from 'axios'
 const state = {
   pcatory: config.projectCatory,
   list: [],
-  info: {}
+  info: {},
+  isNull: true
 }
 const getters = {
+  isnull (state) {
+    return state.isNull
+  },
   pcatory (state) {
     return state.pcatory
   },
@@ -16,6 +21,9 @@ const getters = {
   }
 }
 const mutations = {
+  isnull (state, params) {
+    state.isNull = params
+  },
   projectlist (state, params) {
     state.list = params
   },
@@ -24,6 +32,9 @@ const mutations = {
   }
 }
 const actions = {
+  isnull ({commit}, params) {
+    commit('isnull', params)
+  },
   projectlist ({commit}, params) {
     commit('projectlist', params)
   },

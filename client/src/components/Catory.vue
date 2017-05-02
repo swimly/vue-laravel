@@ -14,6 +14,7 @@ export default {
   name: 'articlecatory',
   created () {
     this.type()
+    console.log(this)
   },
   props: {
     data: {
@@ -23,14 +24,9 @@ export default {
   },
   methods: {
     ...mapMutations({
-      type: 'type'
+      type: 'type',
+      catory: 'catory'
     })
-  },
-  watch: {
-    '$route': (v, o) => {
-      console.log(v.params.type)
-      console.log(this)
-    }
   }
 }
 </script>

@@ -8,143 +8,143 @@ export default new Router({
     path: '/',
     redirect: '/home',
     name: 'main',
-    component: require('@/views/Navigation'),
+    component: resolve => require(['@/views/Navigation'], resolve),
     children: [{
       path: '/signIn',
       name: 'signIn',
       components: {
-        nav: require('@/views/SignIn')
+        nav: resolve => require(['@/views/SignIn'], resolve)
       }
     }, {
       path: '/logout',
       name: 'logout',
       components: {
-        nav: require('@/views/Logout')
+        nav: resolve => require(['@/views/Logout'], resolve)
       }
     }, {
       path: '/projects',
       name: 'projects',
       redirect: '/projects/all',
       components: {
-        nav: require('@/views/Projects')
+        nav: resolve => require(['@/views/Projects'], resolve)
       }
     }, {
       path: '/projects/all',
       name: 'projectall',
       components: {
-        nav: require('@/views/Projects')
+        nav: resolve => require(['@/views/Projects'], resolve)
       }
     }, {
       path: '/projects/:type',
       name: 'project',
       components: {
-        nav: require('@/views/Projects')
+        nav: resolve => require(['@/views/Projects'], resolve)
       }
     }, {
       path: '/project/:id',
       name: 'project',
       components: {
-        nav: require('@/views/Project')
+        nav: resolve => require(['@/views/Project'], resolve)
       }
     }, {
       path: '/articles',
       name: 'articles',
       redirect: '/articles/all',
       components: {
-        nav: require('@/views/Articles')
+        nav: resolve => require(['@/views/Articles'], resolve)
       }
     }, {
       path: '/articles/:type',
       name: 'articleall',
       components: {
-        nav: require('@/views/Articles')
+        nav: resolve => require(['@/views/Articles'], resolve)
       }
     }, {
       path: '/articles/:id',
       name: 'article',
       components: {
-        nav: require('@/views/Article')
+        nav: resolve => require(['@/views/Article'], resolve)
       }
     }, {
       path: '/center',
       name: 'center',
       redirect: 'center/info',
       components: {
-        nav: require('@/views/Center')
+        nav: resolve => require(['@/views/Center'], resolve)
       },
       children: [{
         path: 'info',
         name: 'info',
         components: {
-          center: require('@/views/Center_Info')
+          center: resolve => require(['@/views/Center_Info'], resolve)
         }
       }, {
         path: 'project',
         redirect: 'project/mine',
         name: 'project',
         components: {
-          center: require('@/views/Center_Project')
+          center: resolve => require(['@/views/Center_Project'], resolve)
         }
       }, {
         path: 'project/mine',
         name: 'myproject',
         components: {
-          center: require('@/views/Center_Project_List')
+          center: resolve => require(['@/views/Center_Project_List'], resolve)
         }
       }, {
         path: 'project/add',
         name: 'addproject',
         components: {
-          center: require('@/views/Center_Project_Add')
+          center: resolve => require(['@/views/Center_Project_Add'], resolve)
         }
       }, {
         path: 'article',
         redirect: 'article/mine',
         name: 'article',
         components: {
-          center: require('@/views/Center_Article')
+          center: resolve => require(['@/views/Center_Article'], resolve)
         }
       }, {
         path: 'article/mine',
         name: 'myarticle',
         components: {
-          center: require('@/views/Center_Article_List')
+          center: resolve => require(['@/views/Center_Article_List'], resolve)
         }
       }, {
         path: 'article/add',
         name: 'addarticle',
         components: {
-          center: require('@/views/Center_Article_Add')
+          center: resolve => require(['@/views/Center_Article_Add'], resolve)
         }
       }, {
         path: 'foot',
         name: 'foot',
         components: {
-          center: require('@/views/Center_Foot')
+          center: resolve => require(['@/views/Center_Foot'], resolve)
         }
       }, {
         path: 'collection',
         name: 'collection',
         components: {
-          center: require('@/views/Center_Collection')
+          center: resolve => require(['@/views/Center_Collection'], resolve)
         }
       }, {
         path: 'record',
         name: 'views',
         components: {
-          center: require('@/views/Center_Views')
+          center: resolve => require(['@/views/Center_Views'], resolve)
         }
       }, {
         path: 'reback',
         name: 'reback',
         components: {
-          center: require('@/views/Center_Reback')
+          center: resolve => require(['@/views/Center_Reback'], resolve)
         }
       }]
     }]
   }, {
     path: '/home',
     name: 'home',
-    component: require('@/views/Home')
+    component: resolve => require(['@/views/Home'], resolve)
   }]
 })
