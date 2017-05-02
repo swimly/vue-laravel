@@ -4,7 +4,7 @@ export default {
     text: '全部',
     catory: 'all',
     num: 0,
-    icon: '',
+    icon: 'icon-quanbu',
     url: 'all'
   }, {
     text: '视觉设计',
@@ -40,7 +40,7 @@ export default {
   projectCatory: [{
     text: '全部',
     catory: 'all',
-    icon: '',
+    icon: 'icon-quanbu',
     num: 0,
     url: '/projects/all'
   }, {
