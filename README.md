@@ -14,3 +14,11 @@ bytes
 ``` php
 Schema::defaultStringLength(191);
 ```
+``` bash
+TokenMismatchException in VerifyCsrfToken.php line 68
+```
+打开文件：app\Http\Kernel.php
+把这行注释掉：
+``` php
+\App\Http\Middleware\VerifyCsrfToken::class
+```

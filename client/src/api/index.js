@@ -46,6 +46,7 @@ export default {
       params: p
     })
     .then(function (res) {
+      _this.loading = false
       if (res.data.data.length > 0) {
         _this.projectList(res.data.data)
         _this.isNull(false)

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bbfc7d932af91b0f5304c85430c278c8",
+    "content-hash": "a99967d35a57f12f572e03145e60202e",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1861,6 +1861,50 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
+        },
+        {
+            "name": "zgldh/laravel-upload-manager",
+            "version": "v0.4.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zgldh/laravel-upload-manager.git",
+                "reference": "f554cdbb8e28fa8d0b45c06caf91068922395455"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/zgldh/laravel-upload-manager/f554cdbb8e28fa8d0b45c06caf91068922395455.zip",
+                "reference": "f554cdbb8e28fa8d0b45c06caf91068922395455",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "zgldh\\UploadManager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zgldh",
+                    "email": "zgldh@hotmail.com"
+                }
+            ],
+            "description": "Upload, validate, storage, manage by API for Laravel 5.1/5.2",
+            "keywords": [
+                "api",
+                "laravel",
+                "manage",
+                "storage",
+                "upload",
+                "validate"
+            ],
+            "time": "2017-04-24T02:28:27+00:00"
         }
     ],
     "packages-dev": [

@@ -1,11 +1,14 @@
 <template>
-  <div class="center personer mid-layout grid">
-    <div class="grid-item w-20 aside">
-      <my-catory :data='catory' class="vertical"></my-catory>
+  <div>
+    <div class="center personer mid-layout grid view">
+      <div class="grid-item w-20 aside">
+        <my-catory :data='catory' class="vertical"></my-catory>
+      </div>
+      <div class="grid-item w-80">
+        <router-view name="center"></router-view>
+      </div>
     </div>
-    <div class="grid-item w-80">
-      <router-view name="center"></router-view>
-    </div>
+    <my-footer></my-footer>
   </div>
 </template>
 <script>
@@ -14,7 +17,8 @@
     name: 'center',
     components: {
       'my-header': require('@/components/Header'),
-      'my-catory': require('@/components/Catory')
+      'my-catory': require('@/components/Catory'),
+      'my-footer': require('@/components/Footer')
     },
     computed: {
       ...mapGetters({

@@ -13,6 +13,7 @@
         <my-item :data="item"></my-item>
       </li>
     </ul>
+    <my-loading v-if="loading"></my-loading>
     <my-null v-if="isnull"></my-null>
     <my-footer></my-footer>
   </div>
@@ -24,6 +25,7 @@ export default {
   name: 'navigation',
   data () {
     return {
+      loading: true
     }
   },
   components: {
@@ -31,7 +33,8 @@ export default {
     'my-catory': require('@/components/Catory'),
     'my-footer': require('@/components/Footer'),
     'my-search': require('@/components/Search'),
-    'my-null': require('@/components/null')
+    'my-null': require('@/components/null'),
+    'my-loading': require('@/components/loading')
   },
   created () {
     api.projects(this)

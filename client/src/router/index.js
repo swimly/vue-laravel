@@ -41,7 +41,7 @@ export default new Router({
         nav: resolve => require(['@/views/Projects'], resolve)
       }
     }, {
-      path: '/project/:id',
+      path: '/projects/info/:id',
       name: 'project',
       components: {
         nav: resolve => require(['@/views/Project'], resolve)

@@ -2,7 +2,7 @@
   <dl class="project-item">
     <dt><img src="static/img/img1.jpg" alt=""></dt>
     <dd>
-      <h2><router-link :to="/project/+data.id">{{data.title}}</router-link></h2>
+      <h2><router-link :to="'/projects/info/'+data.id">{{data.title}}</router-link></h2>
       <p><span :class="'tag ' + data.catory">{{data.tag}}</span></p>
       <p class="row w">
         <span class="col v-m time">{{data.time}}</span>

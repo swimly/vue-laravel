@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('/uploadimg','FileController@uploadimg');
 /*用户相关操作*/
 Route::get('signUp', 'UserController@signUp'); //注册
 Route::get('signIn', 'UserController@signIn'); //登陆
@@ -34,3 +35,4 @@ Route::get('articles/add', 'ArticleController@add');
 Route::get('articles/edit/{id}', 'ArticleController@edit');
 Route::get('articles/{id}', 'ArticleController@info');
 Route::get('articles/delete/{id}', 'ArticleController@delete');
+
