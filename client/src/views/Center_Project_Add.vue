@@ -11,16 +11,18 @@
         <th>项目名称：</th>
         <td><div class="text"><input type="text" v-model="form.title"></div></td>
         <th>封面：</th>
-        <td rowspan="3" valign="top">
+        <td rowspan="6" valign="top">
           <vue-core-image-upload
-            v-bind:class="['btn','btn-blue','js-btn-crop']"
+            v-bind:class="['btn','btn-upload']"
             v-bind:crop="false"
             cropRatio="3:1"
-            url="http://localhost/vue-laravel/server/public/uploadimg"
-            text="上传图片"
+            :url="server + 'uploadimg'"
+            text="上传"
             v-on:imageuploaded="imageuploaded"
             extensions="png,gif,jpeg,jpg">
-        </vue-core-image-upload>
+          </vue-core-image-upload>
+          <img style="width:280px;height:180px;border:1px solid #ddd;border-radius:5px;margin-top:10px;" :src="form.cover" alt="">
+          <p class="tips">提示：为了更好的体验效果，请保证图片尺寸为（280px*180px），或者等比图片，以防变形！</p>
         </td>
       </tr>
       <tr>
@@ -44,15 +46,31 @@
       </tr>
       <tr>
         <th>github：</th>
-        <td colspan="3"><div class="text"><input type="text" v-model="form.github"></div></td>
+        <td><div class="text"><input type="text" v-model="form.github"></div></td>
       </tr>
       <tr>
         <th>预览地址：</th>
-        <td colspan="3"><div class="text"><input type="text" v-model="form.preview"></div></td>
+        <td><div class="text"><input type="text" v-model="form.preview"></div></td>
       </tr>
       <tr>
         <th>附件地址：</th>
-        <td colspan="3"><div class="text"><input type="text" v-model="form.file"></div></td>
+        <td><div class="text"><input type="text" v-model="form.file"></div></td>
+      </tr>
+      <tr>
+        <th>banner：</th>
+        <td valign="top" colspan="3">
+          <vue-core-image-upload
+            v-bind:class="['btn','btn-upload']"
+            v-bind:crop="false"
+            cropRatio="3:1"
+            :url="server + 'uploadimg'"
+            text="上传"
+            v-on:imageuploaded="banneruploaded"
+            extensions="png,gif,jpeg,jpg">
+          </vue-core-image-upload>
+          <img style="width:100%;height:280px;border:1px solid #ddd;border-radius:5px;margin-top:10px;" :src="form.banner" alt="">
+          <p class="tips">提示：为了更好的体验效果，请保证图片尺寸为（1024px*300px），或者等比图片，以防变形！</p>
+        </td>
       </tr>
       <tr>
         <th>参与者：</th>
@@ -70,21 +88,24 @@
 </template>
 <script>
   import api from '../api'
+  import config from '../config'
   import VueCoreImageUpload from 'vue-core-image-upload'
   export default {
     name: 'addProject',
     data () {
       return {
         tips: '',
+        server: config.server,
         form: {
           title: '',
           catory: '',
           author: '',
           join: '',
-          cover: '',
+          cover: 'static/img/img1.jpg',
+          banner: 'static/img/img2.jpg',
           github: '',
           preview: 'http://web.swimly.cn/',
-          file: '',
+          file: 'https://github.com',
           views: 0,
           content: '',
           tag: ''
@@ -97,7 +118,11 @@
       },
       imageuploaded (res) {
         console.log(res)
-        this.tips = res
+        this.form.cover = config.storage + res
+      },
+      banneruploaded (res) {
+        console.log(res)
+        this.form.banner = config.storage + res
       }
     },
     components: {
@@ -105,3 +130,5 @@
     }
   }
 </script>
+<style>
+</style>

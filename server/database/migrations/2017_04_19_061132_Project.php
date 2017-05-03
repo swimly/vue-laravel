@@ -21,8 +21,8 @@ class Project extends Migration
             $table->string('author', 20)->nullable();
             $table->string('platform', 20)->nullable();
             $table->string('join')->nullable();
-            $table->string('cover', 50)->nullable();
-            $table->string('banner', 50)->nullable();
+            $table->string('cover', 150)->nullable();
+            $table->string('banner', 150)->nullable();
             $table->string('github', 100)->nullable();
             $table->string('preview', 100)->nullable();
             $table->string('file', 100)->nullable();

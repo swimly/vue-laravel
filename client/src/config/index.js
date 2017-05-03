@@ -1,4 +1,6 @@
 export default {
+  server: 'http://192.168.4.151/vue-laravel/server/public/',
+  storage: 'http://192.168.4.151/vue-laravel/server/app/storage/uploads/',
   pageSize: 3,
   articleCatory: [{
     text: '全部',

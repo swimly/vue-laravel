@@ -4,7 +4,7 @@
       <div class="grid-item w-80 fs-14">
         <div v-if="data.data">
           <h1 class="title">{{data.data.title}}</h1>
-          <img src="static/img/banner.jpg" alt="" class="banner">
+          <img :src="data.data.banner" alt="" class="banner">
           <table class="table-info">
             <tr>
               <th>项目名称：</th>
@@ -86,6 +86,7 @@
   }
 </script>
 <style>
+.banner{width:100%;height:280px;}
 .info .title{font-size:24px;font-weight:normal;border-bottom:1px solid #eee;padding-bottom:10px;margin:0 0 10px 0;color:#666;position:relative;padding-left:0.5em;}
 .info .title:before{content:'';display:inline-block;width:4px;height:28px;background:#E82954;position:absolute;left:0;top:50%;margin-top:-16px;}
 .info .sub-title{font-size:16px;font-weight:normal;color:#666;}

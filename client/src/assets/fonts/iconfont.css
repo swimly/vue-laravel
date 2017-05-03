@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1493716571914'); /* IE9*/
-  src: url('iconfont.eot?t=1493716571914#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1493716571914') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1493716571914') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1493716571914#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1493795549362'); /* IE9*/
+  src: url('iconfont.eot?t=1493795549362#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1493795549362') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1493795549362') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1493795549362#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -40,6 +40,10 @@
 .icon-group:before { content: "\e601"; }
 
 .icon-flash:before { content: "\e73d"; }
+
+.icon-upload:before { content: "\e633"; }
+
+.icon-upload1:before { content: "\e6a2"; }
 
 .icon-visual:before { content: "\e725"; }
 

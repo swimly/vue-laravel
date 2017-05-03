@@ -11,7 +11,6 @@ class ProjectController extends Controller
 {
     // 添加项目
     public function add (Request $request) {
-        $callback = $request->callback;
         $project = new Project;
         $req = $request->all();
         foreach ($req as $key => $value) {
@@ -21,7 +20,7 @@ class ProjectController extends Controller
         }
         $project->time = Carbon::now();
         $project->save();
-        return $callback.'('.$project.')';
+        return $project;
     }
     //修改项目
     public function edit (Request $request, $id) {
@@ -45,7 +44,7 @@ class ProjectController extends Controller
                 $projects = Project::where($key, $value)->paginate(5);
             }
         }else{
-            $projects = Project::paginate(5);
+            $projects = Project::paginate(10);
         }
         
         return $projects;

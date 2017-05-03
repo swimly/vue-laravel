@@ -1,8 +1,9 @@
 import axios from 'axios'
+import config from '../config'
 export default {
   signIn (_this, fn) {
     console.log(_this.form.email, _this.form.password)
-    axios.get('http://192.168.4.151/vue-laravel/server/public/signIn', {
+    axios.get(config.server + 'signIn', {
       params: {
         email: _this.form.email,
         password: _this.form.password
@@ -22,10 +23,14 @@ export default {
     })
   },
   addProject (_this) {
-    axios.get('http://192.168.4.151/vue-laravel/server/public/projects/add', {
+    console.log(_this.form)
+    axios.get(config.server + 'projects/add', {
       params: _this.form
     })
     .then(function (res) {
+      console.log(typeof res.data)
+      const id = res.data.id
+      _this.$router.push('/projects/info/' + id)
     })
     .catch(function (error) {
       console.log(error)
@@ -42,7 +47,7 @@ export default {
         catory: type
       }
     }
-    axios.get('http://192.168.4.151/vue-laravel/server/public/projects', {
+    axios.get(config.server + 'projects', {
       params: p
     })
     .then(function (res) {
@@ -61,7 +66,7 @@ export default {
   },
   projectInfo (_this) {
     const id = _this.$route.params.id
-    axios.get('http://192.168.4.151/vue-laravel/server/public/projects/' + id, {
+    axios.get(config.server + 'projects/' + id, {
     })
     .then(function (res) {
       console.log(res)
