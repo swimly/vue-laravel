@@ -8,6 +8,31 @@
         <col width="30%">
       </colgroup>
       <tr>
+        <th>分类：</th>
+        <td>
+          <div class="text">
+            <select name="type" id="" v-model="form.catory">
+              <option value="system" selected>系统</option>
+              <option value="app">移动</option>
+              <option value="web">网站</option>
+              <option value="pdf">纸面</option>
+              <option value="swf">动画</option>
+              <option value="video">视频</option>
+            </select>
+          </div>
+        </td>
+        <th></th>
+        <td></td>
+      </tr>
+    </table>
+    <table class="form-table w" v-if="form.catory === 'system' || form.catory === 'app' || form.catory === 'web'">
+      <colgroup>
+        <col width="15%">
+        <col width="50%">
+        <col width="5%">
+        <col width="30%">
+      </colgroup>
+      <tr>
         <th>项目名称：</th>
         <td><div class="text"><input type="text" v-model="form.title"></div></td>
         <th>封面：</th>
@@ -22,27 +47,14 @@
             extensions="png,gif,jpeg,jpg">
           </vue-core-image-upload>
           <img style="width:280px;height:180px;border:1px solid #ddd;border-radius:5px;margin-top:10px;" :src="form.cover" alt="">
-          <p class="tips">提示：为了更好的体验效果，请保证图片尺寸为（280px*180px），或者等比图片，以防变形！</p>
-        </td>
-      </tr>
-      <tr>
-        <th>分类：</th>
-        <td>
-          <div class="text">
-            <select name="type" id="" v-model="form.catory">
-              <option value="system">系统</option>
-              <option value="app">移动</option>
-              <option value="web">网站</option>
-              <option value="pdf">纸面</option>
-              <option value="swf">动画</option>
-              <option value="video">视频</option>
-            </select>
-          </div>
+          <p class="tips">提示：为了更好的体验效果，请保证图片尺寸为（280px*180px），或者等比图片。</p>
         </td>
       </tr>
       <tr>
         <th>标签：</th>
         <td><div class="text"><input type="text" v-model="form.tag"></div></td>
+      </tr>
+      <tr>
       </tr>
       <tr>
         <th>github：</th>
@@ -76,6 +88,66 @@
         <th>参与者：</th>
         <td colspan="3"><div class="text"><input type="text" v-model="form.join"></div></td>
       </tr>
+    </table>
+    <table class="form-table w" v-if="form.catory === 'pdf' || form.catory === 'swf' || form.catory === 'video'">
+      <colgroup>
+        <col width="15%">
+        <col width="85%">
+      </colgroup>
+      <tr>
+        <th>封面：</th>
+        <td valign="top">
+          <vue-core-image-upload
+            v-bind:class="['btn','btn-upload']"
+            v-bind:crop="false"
+            cropRatio="3:1"
+            :url="server + 'uploadimg'"
+            text="上传"
+            v-on:imageuploaded="imageuploaded"
+            extensions="png,gif,jpeg,jpg">
+          </vue-core-image-upload>
+          <br/>
+          <img style="width:280px;height:180px;border:1px solid #ddd;border-radius:5px;margin-top:10px;" :src="form.cover" alt="">
+          <p class="tips">提示：为了更好的体验效果，请保证图片尺寸为（280px*180px），或者等比图片。</p>
+        </td>
+      </tr>
+      <tr>
+        <th>项目名称：</th>
+        <td><div class="text"><input type="text" v-model="form.title"></div></td>
+      </tr>
+      <tr>
+        <th>标签：</th>
+        <td><div class="text"><input type="text" v-model="form.tag"></div></td>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+        <th>附件：</th>
+        <td valign="top" colspan="3">
+          <vue-core-image-upload
+            v-bind:class="['btn','btn-upload']"
+            v-bind:crop="false"
+            cropRatio="3:1"
+            :url="server + 'uploadimg'"
+            text="上传"
+            v-on:imageuploaded="banneruploaded"
+            extensions="pdf,swf,mp4">
+          </vue-core-image-upload>
+          <p class="tips">提示：为了更好的体验效果，请保证图片尺寸为（1024px*300px），或者等比图片，以防变形！</p>
+        </td>
+      </tr>
+      <tr>
+        <th>参与者：</th>
+        <td colspan="3"><div class="text"><input type="text" v-model="form.join"></div></td>
+      </tr>
+    </table>
+    <table class="form-table w">
+      <colgroup>
+        <col width="15%">
+        <col width="50%">
+        <col width="5%">
+        <col width="30%">
+      </colgroup>
       <tr>
         <th></th>
         <td colspan="3">
@@ -98,7 +170,7 @@
         server: config.server,
         form: {
           title: '',
-          catory: '',
+          catory: 'system',
           author: '',
           join: '',
           cover: 'static/img/img1.jpg',

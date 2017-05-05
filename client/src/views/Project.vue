@@ -4,7 +4,9 @@
       <div class="grid-item w-80 fs-14">
         <div v-if="data.data">
           <h1 class="title">{{data.data.title}}</h1>
-          <img :src="data.data.banner" alt="" class="infobanner">
+          <img :src="data.data.banner" alt="" class="infobanner" v-if="data.data.catory === 'system' || data.data.catory === 'app' || data.data.catory === 'web'">
+          <pdf :src="data.data.banner"></pdf>
+          <p>{{data.data.banner}}</p>
           <table class="table-info">
             <tr>
               <th>项目名称：</th>
@@ -55,6 +57,7 @@
 </template>
 <script>
   import {mapGetters, mapActions} from 'vuex'
+  import pdf from 'vue-pdf'
   import api from '../api'
   export default {
     name: 'project',
@@ -67,7 +70,8 @@
       'my-search': require('@/components/Search'),
       'my-catory': require('@/components/Catory'),
       'my-link': require('@/components/Link'),
-      'my-footer': require('@/components/Footer')
+      'my-footer': require('@/components/Footer'),
+      pdf
     },
     computed: {
       ...mapGetters({

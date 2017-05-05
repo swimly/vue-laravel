@@ -75,6 +75,12 @@ export default {
     .catch(function (error) {
       console.log(error)
     })
+    // _this.$http.jsonp(config.server + 'projects/' + id, {
+    //   callback: 'jsonp'
+    // }).then(function (res) {
+    //   _this.projectInfo(res)
+    //   console.log(res)
+    // })
   },
   articles (_this) {
   },

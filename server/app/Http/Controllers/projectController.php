@@ -53,6 +53,7 @@ class ProjectController extends Controller
     public function info (Request $request,$id) {
         $callback = $request->callback;
         $info = Project::find($id);
+        // return $callback.'('.$info.')';
         return $info;
     }
     // 删除指定项目
