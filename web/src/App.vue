@@ -1,9 +1,6 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <ui-alert @dismiss="closeAlert1" v-show="showAlert1">
-        Hi everybody! This is the default alert.
-    </ui-alert>
   </div>
 </template>
 
