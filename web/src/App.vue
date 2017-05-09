@@ -1,20 +1,28 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view></router-view>
-    <md-bottom-bar>
-      <md-bottom-bar-item md-iconset="icon-speedometer">Recents</md-bottom-bar-item>
-      <md-bottom-bar-item md-iconset="icon-heart" md-active>Favorites</md-bottom-bar-item>
-      <md-bottom-bar-item md-iconset="icon-cursor">Nearby</md-bottom-bar-item>
-    </md-bottom-bar>
+    <ui-alert @dismiss="closeAlert1" v-show="showAlert1">
+        Hi everybody! This is the default alert.
+    </ui-alert>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      showAlert1: true
+    }
+  },
+  methods: {
+    closeAlert1 () {
+      this.showAlert1 = false
+    }
+  }
 }
 </script>
 
 <style>
+@import './assets/css/main.css';
 </style>

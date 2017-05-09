@@ -3,11 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.css'
-
+import KeenUI from 'keen-ui'
+import 'keen-ui/dist/keen-ui.css'
+Vue.use(KeenUI)
 Vue.config.productionTip = false
-Vue.use(VueMaterial)
 
 /* eslint-disable no-new */
 new Vue({
