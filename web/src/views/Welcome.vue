@@ -1,8 +1,6 @@
 <template>
-  <div class="page view">
-    <page-header></page-header>
-    <page-aside></page-aside>
-    <router-view name="sub" class="content"></router-view>
+  <div class="page">
+    欢迎页
   </div>
 </template>
 <script>
@@ -14,8 +12,3 @@ export default {
   }
 }
 </script>
-<style>
-.view{padding:0 0 0 200px;}
-.content{padding-top:50px;}
-</style>
-

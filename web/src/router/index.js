@@ -8,12 +8,14 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: resolve => require(['@/views/Index'], resolve)
-    },
-    {
-      path: '/signIn',
-      name: 'signIn',
-      component: resolve => require(['@/views/Login'], resolve)
+      component: resolve => require(['@/views/Index'], resolve),
+      children: [
+        {
+          path: '/welcome',
+          name: 'welcome',
+          components: {sub: resolve => require(['@/views/Welcome'], resolve)}
+        }
+      ]
     }
   ]
 })
