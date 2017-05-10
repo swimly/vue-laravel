@@ -22,6 +22,6 @@ export default {
 </script>
 <style>
 .view{padding:0 0 0 200px;}
-.content{padding-top:40px;}
+.content{padding:50px 10px 10px;height:100%;}
 </style>
 
