@@ -9,5 +9,5 @@
 <script>
 </script>
 <style>
-.header{height:50px;background:#fff;border-bottom:1px solid #ccc;position:fixed;top:0;left:200px;right:0;background:#545F71;}
+.header{height:40px;background:#fff;border-bottom:1px solid #eee;position:fixed;top:0;left:200px;right:0;background:#f5f5f5;}
 </style>

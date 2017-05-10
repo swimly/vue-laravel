@@ -14,6 +14,13 @@ export default new Router({
           path: '/welcome',
           name: 'welcome',
           components: {sub: resolve => require(['@/views/Welcome'], resolve)}
+        }, {
+          path: '/users',
+          redirect: 'users/list'
+        }, {
+          path: '/users/list',
+          name: 'users',
+          components: {sub: resolve => require(['@/views/Users'], resolve)}
         }
       ]
     }
