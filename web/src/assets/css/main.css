@@ -9,9 +9,32 @@ body{margin:0;height:100%;}
 .col{display:table-cell;}
 .v-m{vertical-align:middle;}
 .content.has-page{padding-bottom:40px;}
-.content.has-page .paging{height:40px;}
+.content.has-page .paging{height:40px;font-size:14px;color: #666;}
 .el-pagination{display:inline-block;}
 .form{font-size:14px;}
 .form th{font-weight:normal;text-align:right;color:#333;}
 .form td{color:#666;height:40px;}
 .text-btn{font-size:14px;color:#ED625C;cursor: pointer;}
+
+::-webkit-scrollbar
+{
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track-piece
+{
+    background-color: #eee;
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:vertical
+{
+    height: 5px;
+    background-color: #ccc;
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:horizontal
+{
+    width: 5px;
+    background-color: #eee;
+    -webkit-border-radius: 6px;
+}

@@ -4,6 +4,7 @@
       <el-table
         :height= height
         ref="multipleTable"
+        stripe
         :data="userlist"
         border
         tooltip-effect="dark"
@@ -85,7 +86,11 @@
       </el-table>
     </div>
     <div class="row w paging">
-      <div class="col v-m t-r">
+      <li class="col v-m">
+        <el-button type="primary" size="small" :disabled="multipleSelection.length === 0">删除所选</el-button>
+        选中<span style="color:#f00;padding:0 5px;">{{multipleSelection.length}}</span>条
+      </li>
+      <li class="col v-m t-r">
         <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
@@ -95,7 +100,7 @@
           layout="total, sizes, prev, pager, next, jumper"
           :total="userlist.length">
         </el-pagination>
-      </div>
+      </li>
     </div>
     <ui-modal ref="modal_delete" title="确认删除">
         您确认要删除此用户？该操作不可恢复！
@@ -263,6 +268,7 @@
       },
       handleSelectionChange (val) {
         this.multipleSelection = val
+        console.log(this.multipleSelection)
       },
       openModal (ref) {
         this.$refs[ref].open()
