@@ -10,7 +10,7 @@
       <li class="col v-m t-r">
         <ui-button color="primary" size="normal">查询</ui-button>
         <ui-button color="orange" size="normal">重置</ui-button>
-        <ui-button color="green" size="normal">新增</ui-button>
+        <ui-button color="green" size="normal" @click="handleAdd()">新增</ui-button>
       </li>
     </ul>
     <div class="h table-content">
@@ -230,6 +230,114 @@
           <ui-button color="default" size="normal" @click="closeModal('modal_edit')">取消</ui-button>
         </p>
     </ui-modal>
+    <!--添加用户-->
+    <ui-modal ref="modal_add" size="large" title="添加用户">
+        <table class="form" style="width:80%;margin:0 auto;">
+          <colgroup>
+            <col width="15%">
+            <col width="85%">
+          </colgroup>
+          <tr>
+            <th>ID：</th>
+            <td>{{add.userId}}</td>
+          </tr>
+          <tr>
+            <th>姓名：</th>
+            <td>
+              <el-input
+                size="small"
+                placeholder="请输入内容"
+                v-model="add.name">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <th>性别：</th>
+            <td>
+              <el-radio class="radio" v-model="add.sex" label="男">男</el-radio>
+              <el-radio class="radio" v-model="add.sex" label="女">女</el-radio>
+            </td>
+          </tr>
+          <tr>
+            <th>QQ：</th>
+            <td>
+              <el-input
+                size="small"
+                placeholder="请输入内容"
+                v-model="add.QQ">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <th>微信：</th>
+            <td>
+              <el-input
+                size="small"
+                placeholder="请输入内容"
+                v-model="add.wechat">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <th>户籍地：</th>
+            <td>
+              <el-input
+                size="small"
+                placeholder="请输入内容"
+                v-model="add.homeplace">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <th>现住地：</th>
+            <td>
+              <el-input
+                size="small"
+                placeholder="请输入内容"
+                v-model="add.residence">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <th>部门：</th>
+            <td>
+              <el-select v-model="add.department" placeholder="请选择">
+                <el-option
+                  v-for="item in depart"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value">
+                </el-option>
+              </el-select>
+            </td>
+          </tr>
+          <tr>
+            <th>职位：</th>
+            <td>
+              <el-input
+                size="small"
+                placeholder="请输入内容"
+                v-model="add.position">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <th>个人介绍：</th>
+            <td>
+              <el-input
+                type="textarea"
+                :rows="2"
+                placeholder="请输入内容"
+                v-model="add.info">
+              </el-input>
+            </td>
+          </tr>
+        </table>
+        <p class="t-r" style="width:80%;margin:0 auto;padding-top:30px;">
+          <ui-button color="primary" size="normal" @click="handleEditFun()">添加</ui-button>
+          <ui-button color="default" size="normal" @click="closeModal('modal_edit')">取消</ui-button>
+        </p>
+    </ui-modal>
   </div>
 </template>
 <script>
@@ -244,7 +352,8 @@
         currentPage: 1,
         edit: {},
         depart: config.depart,
-        editSucces: true
+        editSucces: true,
+        add: {}
       }
     },
     created () {
@@ -265,6 +374,9 @@
       })
     },
     methods: {
+      handleAdd () {
+        this.openModal('modal_add')
+      },
       handleDelete (index, row) {
         this.openModal('modal_delete')
         this.edit = row
