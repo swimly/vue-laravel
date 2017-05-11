@@ -60,6 +60,17 @@ export default new Router({
           name: 'articlesAna',
           components: {sub: resolve => require(['@/views/ArticlesAnalysis'], resolve)}
         }, {
+          path: '/photos',
+          redirect: 'photos/list'
+        }, {
+          path: '/photos/list',
+          name: 'photos',
+          components: {sub: resolve => require(['@/views/Photos'], resolve)}
+        }, {
+          path: '/photos/add',
+          name: 'photosAdd',
+          components: {sub: resolve => require(['@/views/PhotosAdd'], resolve)}
+        }, {
           path: '/count',
           name: 'count',
           components: {sub: resolve => require(['@/views/Count'], resolve)}

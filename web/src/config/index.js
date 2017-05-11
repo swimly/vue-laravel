@@ -1,4 +1,5 @@
 export default {
+  server: 'http://192.168.4.151/vue-laravel/server/public/',
   menu: [{
     text: '首页',
     url: '/home',
@@ -48,7 +49,14 @@ export default {
   }, {
     text: '图库',
     url: '/photos',
-    icon: 'icon-photos'
+    icon: 'icon-photos',
+    sub: [ {
+      text: '相册列表',
+      url: '/photos/list'
+    }, {
+      text: '上传图片',
+      url: '/photos/add'
+    }]
   }, {
     text: '统计',
     url: '/count',
