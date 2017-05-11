@@ -1,12 +1,240 @@
 <template>
-  <div>{{userlist}}</div>
+  <div class="h has-page">
+    <div class="h table-content">
+      <el-table
+        :height= height
+        ref="multipleTable"
+        :data="userlist"
+        border
+        tooltip-effect="dark"
+        style="width: 100%"
+        @selection-change="handleSelectionChange">
+        <el-table-column
+          align="center"
+          type="selection"
+          width="55">
+        </el-table-column>
+        <el-table-column
+          align="center"
+          prop="userId"
+          label="ID"
+          width="120">
+          <template scope="scope">{{ scope.row.userId }}</template>
+        </el-table-column>
+        <el-table-column
+          prop="name"
+          align="center"
+          sortable
+          label="姓名"
+          width="100">
+        </el-table-column>
+        <el-table-column
+          prop="phone"
+          align="center"
+          label="手机号码"
+          sortable
+          width="140"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="QQ"
+          align="center"
+          sortable
+          label="QQ"
+          width="150"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="wechat"
+          align="center"
+          width="120"
+          label="微信"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="sex"
+          align="center"
+          label="性别"
+          sortable
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="department"
+          align="center"
+          sortable
+          label="部门"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="created_at"
+          align="center"
+          label="注册时间"
+          sortable
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          label="操作"
+          align="center"
+          show-overflow-tooltip>
+          <template scope="scope" style="text-align:center;">
+            <span class="text-btn" color="primary" @click="handleEdit(scope.$index, scope.row)">查看</span>
+            <span class="text-btn" color="primary" @click="handleEdit(scope.$index, scope.row)">编辑</span>
+            <span class="text-btn" color="primary" @click="openModal('modal_delete')">删除</span>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+    <div class="row w paging">
+      <div class="col v-m t-r">
+        <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="currentPage"
+          :page-sizes="[20, 50, 100, 200]"
+          :page-size="20"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="userlist.length">
+        </el-pagination>
+      </div>
+    </div>
+    <ui-modal ref="modal_delete" title="确认删除">
+        您确认要删除此用户？该操作不可恢复！
+        <div slot="footer">
+            <ui-button color="primary">确认</ui-button>
+            <ui-button @click="closeModal('modal6')">取消</ui-button>
+        </div>
+    </ui-modal>
+    <!--编辑用户-->
+    <ui-modal ref="modal_edit" size="large" title="编辑用户">
+        <table class="form" style="width:80%;margin:0 auto;">
+          <colgroup>
+            <col width="15%">
+            <col width="85%">
+          </colgroup>
+          <tr>
+            <th>ID：</th>
+            <td>{{edit.userId}}</td>
+          </tr>
+          <tr>
+            <th>姓名：</th>
+            <td>
+              <el-input
+                size="small"
+                placeholder="请输入内容"
+                v-model="edit.name">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <th>性别：</th>
+            <td>
+              <el-radio class="radio" v-model="edit.sex" label="男">男</el-radio>
+              <el-radio class="radio" v-model="edit.sex" label="女">女</el-radio>
+            </td>
+          </tr>
+          <tr>
+            <th>QQ：</th>
+            <td>
+              <el-input
+                size="small"
+                placeholder="请输入内容"
+                v-model="edit.QQ">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <th>微信：</th>
+            <td>
+              <el-input
+                size="small"
+                placeholder="请输入内容"
+                v-model="edit.wechat">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <th>户籍地：</th>
+            <td>
+              <el-input
+                size="small"
+                placeholder="请输入内容"
+                v-model="edit.homeplace">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <th>现住地：</th>
+            <td>
+              <el-input
+                size="small"
+                placeholder="请输入内容"
+                v-model="edit.residence">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <th>部门：</th>
+            <td>
+              <el-select v-model="edit.department" placeholder="请选择">
+                <el-option
+                  v-for="item in depart"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value">
+                </el-option>
+              </el-select>
+            </td>
+          </tr>
+          <tr>
+            <th>职位：</th>
+            <td>
+              <el-input
+                size="small"
+                placeholder="请输入内容"
+                v-model="edit.position">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <th>个人介绍：</th>
+            <td>
+              <el-input
+                type="textarea"
+                :rows="2"
+                placeholder="请输入内容"
+                v-model="edit.info">
+              </el-input>
+            </td>
+          </tr>
+        </table>
+        <p class="t-r" style="width:80%;margin:0 auto;padding-top:30px;">
+          <ui-button color="primary" size="normal" @click="handleEditFun()">修改</ui-button>
+          <ui-button color="default" size="normal" @click="closeModal('modal_edit')">取消</ui-button>
+        </p>
+    </ui-modal>
+  </div>
 </template>
 <script>
+  import config from '../config'
   import {mapGetters, mapActions} from 'vuex'
   export default {
     name: 'userlist',
+    data () {
+      return {
+        height: 0,
+        multipleSelection: [],
+        currentPage: 1,
+        edit: {},
+        depart: config.depart,
+        editSucces: true
+      }
+    },
     created () {
       this.getuserlist(this)   // 获取用户列表
+    },
+    mounted () {
+      this.height = document.querySelector('.table-content').clientHeight
+      console.log(this.height)
     },
     computed: {
       ...mapGetters({
@@ -14,8 +242,37 @@
       })
     },
     methods: {
+      handleEdit (index, row) {
+        this.openModal('modal_edit')
+        console.log(row)
+        this.edit = row
+      },
+      handleEditFun () {
+        this.setuserinfo(this)
+      },
+      handleSizeChange () {},
+      handleCurrentChange () {},
+      toggleSelection (rows) {
+        if (rows) {
+          rows.forEach(row => {
+            this.$refs.multipleTable.toggleRowSelection(row)
+          })
+        } else {
+          this.$refs.multipleTable.clearSelection()
+        }
+      },
+      handleSelectionChange (val) {
+        this.multipleSelection = val
+      },
+      openModal (ref) {
+        this.$refs[ref].open()
+      },
+      closeModal (ref) {
+        this.$refs[ref].close()
+      },
       ...mapActions({
-        getuserlist: 'getuserlist'
+        getuserlist: 'getuserlist',
+        setuserinfo: 'setuserinfo'
       })
     }
   }

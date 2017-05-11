@@ -16,16 +16,23 @@ class User extends Migration
         Schema::defaultStringLength(191);
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('userId',8)->nullable();
             $table->string('name',16)->nullable();
             $table->string('sex',4)->nullable();
             $table->string('face',40)->nullable();
             $table->string('email',20)->unique();
+            $table->string('phone',20)->nullable();
+            $table->string('QQ',20)->nullable();
+            $table->string('place',20)->nullable();
+            $table->string('wechat',20)->nullable();
+            $table->string('ip',20)->nullable();
             $table->string('password',50);
             $table->string('homeplace')->nullable();
             $table->string('residence')->nullable();
             $table->string('info')->nullable();
             $table->string('position')->nullable();
             $table->string('department')->nullable();
+            $table->string('activation')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

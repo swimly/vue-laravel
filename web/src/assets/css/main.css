@@ -1,9 +1,17 @@
 *,*::before,*::after {box-sizing: border-box;}
-html {font-size: 100%;height:100%;}
+html {height:100%;}
 h1,h2,h3,h4,p,ul,dl,dd,li{margin:0;padding:0;}
 body{margin:0;height:100%;}
-.w{width:100%;}
+.w{width:100%;}.h{height:100%;}
+.t-r{text-align:right;}.t-c{text-align:center;}
 .app,.page{height:100%;}
 .row{display:table;table-layout: fixed;border-collapse: collapse;}
 .col{display:table-cell;}
 .v-m{vertical-align:middle;}
+.content.has-page{padding-bottom:40px;}
+.content.has-page .paging{height:40px;}
+.el-pagination{display:inline-block;}
+.form{font-size:14px;}
+.form th{font-weight:normal;text-align:right;color:#333;}
+.form td{color:#666;height:40px;}
+.text-btn{font-size:14px;color:#ED625C;cursor: pointer;}

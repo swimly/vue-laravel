@@ -58,10 +58,10 @@ class UserController extends Controller
         $req = $request->all();
         if(count($req)>0){
             foreach($req as $key => $value){
-                $users = User::where($key, $value)->paginate(10);
+                $users = User::where($key, $value)->paginate(30);
             }
         }else{
-            $users = User::paginate(10);
+            $users = User::paginate(30);
         }
         
         return $users;

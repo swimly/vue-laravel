@@ -65,5 +65,15 @@ export default {
     text: '关于',
     url: '/about',
     icon: 'icon-about'
+  }],
+  depart: [{
+    text: '设计制作部',
+    value: '设计制作部'
+  }, {
+    text: '财务部',
+    value: '财务部'
+  }, {
+    text: '人事部',
+    value: '人事部'
   }]
 }

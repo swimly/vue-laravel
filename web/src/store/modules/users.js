@@ -14,6 +14,27 @@ const mutations = {
     })
     .then(function (res) {
       state.UserList = res.data.data
+      console.log(res.data.data)
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+  },
+  setuserinfo (state, This) {
+    const data = This.edit
+    const id = data.id
+    delete data.id
+    axios.get(config.server + 'users/edit/' + id, {
+      params: data
+    })
+    .then(function (res) {
+      if (res) {
+        This.closeModal('modal_edit')
+        This.$message({
+          message: '恭喜，修改' + id + '成功！',
+          type: 'success'
+        })
+      }
     })
     .catch(function (error) {
       console.log(error)
@@ -22,7 +43,10 @@ const mutations = {
 }
 const actions = {
   getuserlist ({commit}, This) {
-    commit('getuserlist')
+    commit('getuserlist', This)
+  },
+  setuserinfo ({commit}, This) {
+    commit('setuserinfo', This)
   }
 }
 export default {

@@ -6,7 +6,10 @@ import router from './router'
 import KeenUI from 'keen-ui'
 import 'keen-ui/dist/keen-ui.css'
 import store from './store/store'
+import Element from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
 Vue.use(KeenUI)
+Vue.use(Element)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
