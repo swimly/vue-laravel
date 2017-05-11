@@ -239,7 +239,11 @@
     },
     mounted () {
       this.height = document.querySelector('.table-content').clientHeight
-      console.log(this.height)
+      document.body.addEventListener('keyup', function (e) {
+        if (e.keyCode === 13) {
+          this.setuserinfo(this)
+        }
+      })
     },
     computed: {
       ...mapGetters({
