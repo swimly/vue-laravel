@@ -39,6 +39,22 @@ const mutations = {
     .catch(function (error) {
       console.log(error)
     })
+  },
+  deleteuser (state, This) {
+    const id = This.edit.id
+    axios.get(config.server + 'users/delete/' + id)
+    .then(function (res) {
+      if (res) {
+        This.closeModal('modal_delete')
+        This.$message({
+          message: '恭喜，删除' + id + '成功！',
+          type: 'success'
+        })
+      }
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
   }
 }
 const actions = {
@@ -47,6 +63,9 @@ const actions = {
   },
   setuserinfo ({commit}, This) {
     commit('setuserinfo', This)
+  },
+  deleteuser ({commit}, This) {
+    commit('deleteuser', This)
   }
 }
 export default {

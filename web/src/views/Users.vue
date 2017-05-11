@@ -1,5 +1,18 @@
 <template>
-  <div class="h has-page">
+  <div class="h has-page has-search">
+    <ul class="row w search">
+      <li class="col v-m" style="width:5em;">
+        关键字：
+      </li>
+      <li class="col v-m">
+        <el-input v-model="input" placeholder="请输入内容"></el-input>
+      </li>
+      <li class="col v-m t-r">
+        <ui-button color="primary" size="normal">查询</ui-button>
+        <ui-button color="orange" size="normal">重置</ui-button>
+        <ui-button color="green" size="normal">新增</ui-button>
+      </li>
+    </ul>
     <div class="h table-content">
       <el-table
         :height= height
@@ -80,7 +93,7 @@
           <template scope="scope" style="text-align:center;">
             <span class="text-btn" color="primary" @click="handleEdit(scope.$index, scope.row)">查看</span>
             <span class="text-btn" color="primary" @click="handleEdit(scope.$index, scope.row)">编辑</span>
-            <span class="text-btn" color="primary" @click="openModal('modal_delete')">删除</span>
+            <span class="text-btn" color="primary" @click="handleDelete(scope.$index, scope.row)">删除</span>
           </template>
         </el-table-column>
       </el-table>
@@ -105,8 +118,8 @@
     <ui-modal ref="modal_delete" title="确认删除">
         您确认要删除此用户？该操作不可恢复！
         <div slot="footer">
-            <ui-button color="primary">确认</ui-button>
-            <ui-button @click="closeModal('modal6')">取消</ui-button>
+            <ui-button color="primary" @click="handleDeleteOk()">确认</ui-button>
+            <ui-button @click="closeModal('modal_delete')">取消</ui-button>
         </div>
     </ui-modal>
     <!--编辑用户-->
@@ -252,6 +265,14 @@
       })
     },
     methods: {
+      handleDelete (index, row) {
+        this.openModal('modal_delete')
+        this.edit = row
+        console.log(row)
+      },
+      handleDeleteOk () {
+        this.deleteuser(this)
+      },
       handleEdit (index, row) {
         this.openModal('modal_edit')
         console.log(row)
@@ -283,7 +304,8 @@
       },
       ...mapActions({
         getuserlist: 'getuserlist',
-        setuserinfo: 'setuserinfo'
+        setuserinfo: 'setuserinfo',
+        deleteuser: 'deleteuser'
       })
     }
   }

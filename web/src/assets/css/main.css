@@ -9,6 +9,8 @@ body{margin:0;height:100%;}
 .col{display:table-cell;}
 .v-m{vertical-align:middle;}
 .content.has-page{padding-bottom:40px;}
+.content.has-search{padding-top:100px;}
+.content.has-search .search{height:60px;margin-top:-60px;}
 .content.has-page .paging{height:40px;font-size:14px;color: #666;}
 .el-pagination{display:inline-block;}
 .form{font-size:14px;}
