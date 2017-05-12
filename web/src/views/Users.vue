@@ -43,11 +43,27 @@
           width="100">
         </el-table-column>
         <el-table-column
+          prop="sex"
+          align="center"
+          label="性别"
+          sortable
+          width="90"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
           prop="phone"
           align="center"
           label="手机号码"
           sortable
           width="140"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="email"
+          align="center"
+          label="邮箱"
+          sortable
+          width="160"
           show-overflow-tooltip>
         </el-table-column>
         <el-table-column
@@ -66,17 +82,18 @@
           show-overflow-tooltip>
         </el-table-column>
         <el-table-column
-          prop="sex"
-          align="center"
-          label="性别"
-          sortable
-          show-overflow-tooltip>
-        </el-table-column>
-        <el-table-column
           prop="department"
           align="center"
           sortable
           label="部门"
+          show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column
+          prop="admin"
+          align="center"
+          sortable
+          width='100'
+          label="管理员"
           show-overflow-tooltip>
         </el-table-column>
         <el-table-column
@@ -221,6 +238,15 @@
             </td>
           </tr>
           <tr>
+            <th>是否管理员：</th>
+            <td>
+              <el-radio-group v-model="edit.admin" size="small">
+                <el-radio-button label="是"></el-radio-button>
+                <el-radio-button label="否"></el-radio-button>
+              </el-radio-group>
+            </td>
+          </tr>
+          <tr>
             <th>个人介绍：</th>
             <td>
               <el-input
@@ -339,6 +365,15 @@
             </td>
           </tr>
           <tr>
+            <th>是否管理员：</th>
+            <td>
+              <el-radio-group v-model="add.admin" size="small">
+                <el-radio-button label="是"></el-radio-button>
+                <el-radio-button label="否"></el-radio-button>
+              </el-radio-group>
+            </td>
+          </tr>
+          <tr>
             <th>个人介绍：</th>
             <td>
               <el-input
@@ -358,7 +393,7 @@
         </table>
         <p class="t-r" style="width:80%;margin:0 auto;padding-top:30px;">
           <ui-button color="primary" size="normal" @click="handleAddFun()">添加</ui-button>
-          <ui-button color="default" size="normal" @click="closeModal('modal_edit')">取消</ui-button>
+          <ui-button color="default" size="normal" @click="closeModal('modal_add')">取消</ui-button>
         </p>
     </ui-modal>
   </div>

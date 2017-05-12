@@ -44,7 +44,7 @@ const mutations = {
       if (res) {
         This.closeModal('modal_edit')
         This.$message({
-          message: '恭喜，修改' + id + '成功！',
+          message: '恭喜，修改' + This.edit.email + '成功！',
           type: 'success'
         })
       }
@@ -59,6 +59,7 @@ const mutations = {
     This.closeModal('modal_delete')
     for (const item in This.delete) {
       const id = This.delete[item].id
+      const email = This.delete[item].email
       for (const item in state.UserList) {
         if (state.UserList[item].id === id) {
           for (const i in state.UserList) {
@@ -72,9 +73,10 @@ const mutations = {
       .then(function (res) {
         if (res) {
           This.$message({
-            message: '恭喜，删除' + id + '成功！',
+            message: '恭喜，删除' + email + '成功！',
             type: 'success'
           })
+          This.getuserlist(This)
         }
       })
       .catch(function (error) {
@@ -83,7 +85,7 @@ const mutations = {
     }
   },
   adduser (state, This) {
-    const name = This.add.name
+    const email = This.add.email
     axios.get(config.server + 'signUp', {
       params: This.add
     })
@@ -92,7 +94,7 @@ const mutations = {
         state.UserList.push(This.add)
         This.closeModal('modal_delete')
         This.$message({
-          message: '恭喜，添加用户' + name + '成功！',
+          message: '恭喜，添加用户' + email + '成功！',
           type: 'success'
         })
         This.closeModal('modal_add')
@@ -101,6 +103,17 @@ const mutations = {
     })
     .catch(function (error) {
       console.log(error)
+      if (This.add.email === '') {
+        This.$message({
+          message: '邮箱不能为空！',
+          type: 'warning'
+        })
+      } else {
+        This.$message({
+          message: This.add.email + '已被注册，请更换邮箱！',
+          type: 'error'
+        })
+      }
     })
   }
 }

@@ -18,6 +18,7 @@ export default {
     info: '',
     position: '',
     department: '',
+    admin: '否',
     created_at: '',
     updated_at: ''
   },

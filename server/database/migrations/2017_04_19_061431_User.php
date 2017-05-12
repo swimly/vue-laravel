@@ -33,6 +33,7 @@ class User extends Migration
             $table->string('position')->nullable();
             $table->dateTime('birth')->nullable();
             $table->string('department')->nullable();
+            $table->string('admin')->nullable();
             $table->string('activation')->nullable();
             $table->rememberToken();
             $table->timestamps();
