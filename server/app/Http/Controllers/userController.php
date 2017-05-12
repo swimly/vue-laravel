@@ -58,7 +58,7 @@ class UserController extends Controller
         $req = $request->all();
         if(count($req)>0){
             foreach($req as $key => $value){
-                $users = User::where($key, $value)->all();
+                $users = User::where($key, 'like', '%'.$value.'%')->all();
             }
         }else{
             $users = User::all();
@@ -78,7 +78,7 @@ class UserController extends Controller
             }
         }
         if(count($req)>0){
-            $users = User::where($key, $value)->paginate($pageSize);
+            $users = User::where($key, 'like', '%'.$value.'%')->paginate($pageSize);
         }else{
             $users = User::paginate($pageSize);
         }

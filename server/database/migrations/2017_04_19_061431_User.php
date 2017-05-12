@@ -31,6 +31,7 @@ class User extends Migration
             $table->string('residence')->nullable();
             $table->string('info')->nullable();
             $table->string('position')->nullable();
+            $table->dateTime('birth')->nullable();
             $table->string('department')->nullable();
             $table->string('activation')->nullable();
             $table->rememberToken();

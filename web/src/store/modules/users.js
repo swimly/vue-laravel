@@ -10,11 +10,10 @@ const getters = {
 }
 const mutations = {
   getuserlist (state, This) {
+    const param = This.search === '' ? {pageSize: This.pageSize, page: This.currentPage} : {pageSize: This.pageSize, page: This.currentPage, name: This.search}
+    console.log(param)
     axios.get(config.server + 'users/paging', {
-      params: {
-        pageSize: This.pageSize,
-        page: This.currentPage
-      }
+      params: param
     })
     .then(function (res) {
       // This.$notify({

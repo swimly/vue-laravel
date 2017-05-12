@@ -1,16 +1,16 @@
 <template>
   <div class="h has-page has-search">
     <ul class="row w search">
-      <li class="col v-m" style="width:5em;">
-        关键字：
+      <li class="col v-m t-r" style="width:3em;">
+        姓名：
       </li>
       <li class="col v-m">
-        <el-input v-model="search" placeholder="请输入内容"></el-input>
+        <el-input v-model="search" size="small" placeholder="请输入内容"></el-input>
       </li>
       <li class="col v-m t-r">
-        <ui-button color="primary" size="normal">查询</ui-button>
-        <ui-button color="orange" size="normal">重置</ui-button>
-        <ui-button color="green" size="normal" @click="handleAdd()">新增</ui-button>
+        <ui-button color="primary" size="small" @click="handleSearch()">查询</ui-button>
+        <ui-button color="orange" size="small" @click="handleReset()">重置</ui-button>
+        <ui-button color="green" size="small" @click="handleAdd()">新增</ui-button>
       </li>
     </ul>
     <div class="h table-content">
@@ -401,6 +401,13 @@
       })
     },
     methods: {
+      handleSearch () {
+        this.getuserlist(this)
+      },
+      handleReset () {
+        this.search = ''
+        this.getuserlist(this)
+      },
       handleAdd () {
         this.openModal('modal_add')
       },
