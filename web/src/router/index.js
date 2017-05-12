@@ -8,76 +8,76 @@ export default new Router({
     {
       path: '/',
       redirect: '/home',
-      component: resolve => require(['@/views/Index'], resolve),
+      component: require('@/views/Index'),
       children: [
         {
           path: '/welcome',
           name: 'welcome',
-          components: {sub: resolve => require(['@/views/Welcome'], resolve)}
+          components: {sub: require('@/views/Welcome')}
         }, {
           path: '/users',
           redirect: 'users/list'
         }, {
           path: '/users/list',
           name: 'users',
-          components: {sub: resolve => require(['@/views/Users'], resolve)}
+          components: {sub: require('@/views/Users')}
         }, {
           path: '/users/add',
           name: 'usersAdd',
-          components: {sub: resolve => require(['@/views/UsersAdd'], resolve)}
+          components: {sub: require('@/views/UsersAdd')}
         }, {
           path: '/users/analysis',
           name: 'usersAna',
-          components: {sub: resolve => require(['@/views/UsersAnalysis'], resolve)}
+          components: {sub: require('@/views/UsersAnalysis')}
         }, {
           path: '/projects',
           redirect: 'projects/list'
         }, {
           path: '/projects/list',
           name: 'projects',
-          components: {sub: resolve => require(['@/views/Projects'], resolve)}
+          components: {sub: require('@/views/Projects')}
         }, {
           path: '/projects/add',
           name: 'projectsAdd',
-          components: {sub: resolve => require(['@/views/ProjectsAdd'], resolve)}
+          components: {sub: require('@/views/ProjectsAdd')}
         }, {
           path: '/projects/analysis',
           name: 'projectsAna',
-          components: {sub: resolve => require(['@/views/ProjectsAnalysis'], resolve)}
+          components: {sub: require('@/views/ProjectsAnalysis')}
         }, {
           path: '/articles',
           redirect: 'articles/list'
         }, {
           path: '/articles/list',
           name: 'articles',
-          components: {sub: resolve => require(['@/views/Articles'], resolve)}
+          components: {sub: require('@/views/Articles')}
         }, {
           path: '/articles/add',
           name: 'articlesAdd',
-          components: {sub: resolve => require(['@/views/ArticlesAdd'], resolve)}
+          components: {sub: require('@/views/ArticlesAdd')}
         }, {
           path: '/articles/analysis',
           name: 'articlesAna',
-          components: {sub: resolve => require(['@/views/ArticlesAnalysis'], resolve)}
+          components: {sub: require('@/views/ArticlesAnalysis')}
         }, {
           path: '/photos',
           redirect: 'photos/list'
         }, {
           path: '/photos/list',
           name: 'photos',
-          components: {sub: resolve => require(['@/views/Photos'], resolve)}
+          components: {sub: require('@/views/Photos')}
         }, {
           path: '/photos/add',
           name: 'photosAdd',
-          components: {sub: resolve => require(['@/views/PhotosAdd'], resolve)}
+          components: {sub: require('@/views/PhotosAdd')}
         }, {
           path: '/count',
           name: 'count',
-          components: {sub: resolve => require(['@/views/Count'], resolve)}
+          components: {sub: require('@/views/Count')}
         }, {
           path: '/home',
           name: 'home',
-          components: {sub: resolve => require(['@/views/Home'], resolve)}
+          components: {sub: require('@/views/Home')}
         }
       ]
     }

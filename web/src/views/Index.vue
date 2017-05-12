@@ -15,8 +15,8 @@ export default {
     }
   },
   components: {
-    'page-header': resolve => require(['@/components/Header'], resolve),
-    'page-aside': resolve => require(['@/components/Aside'], resolve)
+    'page-header': require('@/components/Header'),
+    'page-aside': require('@/components/Aside')
   }
 }
 </script>
