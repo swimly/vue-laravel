@@ -1,5 +1,25 @@
 export default {
   server: 'http://192.168.4.151/vue-laravel/server/public/',
+  userFields: {
+    userId: '',
+    name: '',
+    sex: '',
+    face: '',
+    email: '',
+    phone: '',
+    QQ: '',
+    place: '',
+    wechat: '',
+    ip: '',
+    password: '888888',
+    homeplace: '',
+    residence: '',
+    info: '',
+    position: '',
+    department: '',
+    created_at: '',
+    updated_at: ''
+  },
   menu: [{
     text: '首页',
     url: '/home',

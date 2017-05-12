@@ -5,7 +5,7 @@
         关键字：
       </li>
       <li class="col v-m">
-        <el-input v-model="input" placeholder="请输入内容"></el-input>
+        <el-input v-model="search" placeholder="请输入内容"></el-input>
       </li>
       <li class="col v-m t-r">
         <ui-button color="primary" size="normal">查询</ui-button>
@@ -252,6 +252,16 @@
             </td>
           </tr>
           <tr>
+            <th>邮箱：</th>
+            <td>
+              <el-input
+                size="small"
+                placeholder="请输入内容"
+                v-model="add.email">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
             <th>性别：</th>
             <td>
               <el-radio class="radio" v-model="add.sex" label="男">男</el-radio>
@@ -332,9 +342,15 @@
               </el-input>
             </td>
           </tr>
+          <tr>
+            <th></th>
+            <td>
+              友情提示：请牢记邮箱作为以后的登陆名，密码默认是： 888888。
+            </td>
+          </tr>
         </table>
         <p class="t-r" style="width:80%;margin:0 auto;padding-top:30px;">
-          <ui-button color="primary" size="normal" @click="handleEditFun()">添加</ui-button>
+          <ui-button color="primary" size="normal" @click="handleAddFun()">添加</ui-button>
           <ui-button color="default" size="normal" @click="closeModal('modal_edit')">取消</ui-button>
         </p>
     </ui-modal>
@@ -353,7 +369,8 @@
         edit: {},
         depart: config.depart,
         editSucces: true,
-        add: {}
+        add: config.userFields,
+        search: ''
       }
     },
     created () {
@@ -376,6 +393,9 @@
     methods: {
       handleAdd () {
         this.openModal('modal_add')
+      },
+      handleAddFun () {
+        this.adduser(this)
       },
       handleDelete (index, row) {
         this.openModal('modal_delete')
@@ -417,7 +437,8 @@
       ...mapActions({
         getuserlist: 'getuserlist',
         setuserinfo: 'setuserinfo',
-        deleteuser: 'deleteuser'
+        deleteuser: 'deleteuser',
+        adduser: 'adduser'
       })
     }
   }

@@ -13,11 +13,20 @@ const mutations = {
     axios.get(config.server + 'users', {
     })
     .then(function (res) {
+      This.$notify({
+        title: '成功',
+        message: '数据获取成功！',
+        offset: This.height - 20,
+        type: 'success'
+      })
       state.UserList = res.data.data
-      console.log(res.data.data)
     })
     .catch(function (error) {
-      console.log(error)
+      This.$notify.error({
+        title: '错误',
+        message: '服务器出错，获取数据失败，请稍后重试！' + error,
+        offset: This.height - 20
+      })
     })
   },
   setuserinfo (state, This) {
@@ -55,6 +64,26 @@ const mutations = {
     .catch(function (error) {
       console.log(error)
     })
+  },
+  adduser (state, This) {
+    const name = This.add.name
+    axios.get(config.server + 'signUp', {
+      params: This.add
+    })
+    .then(function (res) {
+      if (res) {
+        state.UserList.push(This.add)
+        This.closeModal('modal_delete')
+        This.$message({
+          message: '恭喜，添加用户' + name + '成功！',
+          type: 'success'
+        })
+        This.closeModal('modal_add')
+      }
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
   }
 }
 const actions = {
@@ -66,6 +95,9 @@ const actions = {
   },
   deleteuser ({commit}, This) {
     commit('deleteuser', This)
+  },
+  adduser ({commit}, This) {
+    commit('adduser', This)
   }
 }
 export default {
