@@ -109,9 +109,9 @@
           @current-change="handleCurrentChange"
           :current-page="currentPage"
           :page-sizes="[20, 50, 100, 200]"
-          :page-size="20"
+          :page-size=pageSize
           layout="total, sizes, prev, pager, next, jumper"
-          :total="userlist.length">
+          :total="total">
         </el-pagination>
       </li>
     </div>
@@ -364,26 +364,28 @@
     data () {
       return {
         height: 0,
+        pageSize: config.pageSize,
         multipleSelection: [],
         currentPage: 1,
         edit: {},
         depart: config.depart,
         editSucces: true,
         add: config.userFields,
-        search: ''
+        search: '',
+        total: 0
       }
     },
     created () {
       this.getuserlist(this)   // 获取用户列表
     },
     mounted () {
-      const This = this
+      // const This = this
       this.height = document.querySelector('.table-content').clientHeight
-      document.body.addEventListener('keyup', function (e) {
-        if (e.keyCode === 13) {
-          This.setuserinfo(This)
-        }
-      })
+      // document.body.addEventListener('keyup', function (e) {
+      //   if (e.keyCode === 13) {
+      //     This.setuserinfo(This)
+      //   }
+      // })
     },
     computed: {
       ...mapGetters({
@@ -413,8 +415,15 @@
       handleEditFun () {
         this.setuserinfo(this)
       },
-      handleSizeChange () {},
-      handleCurrentChange () {},
+      handleSizeChange (val) {
+        console.log(val)
+        this.pageSize = val
+        this.getuserlist(this)
+      },
+      handleCurrentChange (val) {
+        this.currentPage = val
+        this.getuserlist(this)
+      },
       toggleSelection (rows) {
         if (rows) {
           rows.forEach(row => {

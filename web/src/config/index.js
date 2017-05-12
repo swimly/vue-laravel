@@ -1,5 +1,6 @@
 export default {
   server: 'http://192.168.4.151/vue-laravel/server/public/',
+  pageSize: 20,
   userFields: {
     userId: '',
     name: '',

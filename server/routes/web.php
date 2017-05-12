@@ -19,6 +19,7 @@ Route::post('/uploadimg','FileController@uploadimg');
 Route::get('signUp', 'UserController@signUp'); //注册
 Route::get('signIn', 'UserController@signIn'); //登陆
 Route::get('users', 'UserController@lists'); //获取用户表数据，每页10条数据
+Route::get('users/paging', 'UserController@paging'); //获取用户表数据，每页10条数据
 Route::get('users/delete/{id}', 'UserController@delete'); //删除指定id的用户
 Route::get('users/edit/{id}', 'UserController@edit'); //修改指定id的用户
 Route::get('users/{id}', 'UserController@info'); //获取指定id的用户信息

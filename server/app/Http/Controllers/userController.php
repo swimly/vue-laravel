@@ -58,12 +58,30 @@ class UserController extends Controller
         $req = $request->all();
         if(count($req)>0){
             foreach($req as $key => $value){
-                $users = User::where($key, $value)->paginate(30);
+                $users = User::where($key, $value)->all();
             }
         }else{
-            $users = User::paginate(30);
+            $users = User::all();
         }
         
+        return $users;
+    }
+    // 分页
+    public function paging (Request $request) {
+        /*只能进行一个条件查询*/
+        $req = $request->all();
+        $pageSize = $request->pageSize;
+        $currentPage = $request->currentPage;
+        foreach($req as $key => $value){
+            if($key == 'pageSize' || $key == 'page'){
+                unset($req[$key]);
+            }
+        }
+        if(count($req)>0){
+            $users = User::where($key, $value)->paginate($pageSize);
+        }else{
+            $users = User::paginate($pageSize);
+        }
         return $users;
     }
     // 获取指定用户信息

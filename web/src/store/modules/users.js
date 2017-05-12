@@ -10,15 +10,21 @@ const getters = {
 }
 const mutations = {
   getuserlist (state, This) {
-    axios.get(config.server + 'users', {
+    axios.get(config.server + 'users/paging', {
+      params: {
+        pageSize: This.pageSize,
+        page: This.currentPage
+      }
     })
     .then(function (res) {
-      This.$notify({
-        title: '成功',
-        message: '数据获取成功！',
-        offset: This.height - 20,
-        type: 'success'
-      })
+      // This.$notify({
+      //   title: '成功',
+      //   message: '数据获取成功！',
+      //   offset: This.height - 20,
+      //   type: 'success'
+      // })
+      // console.log(res.data)
+      This.total = res.data.total
       state.UserList = res.data.data
     })
     .catch(function (error) {
