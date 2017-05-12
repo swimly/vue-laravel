@@ -82,11 +82,14 @@ export default {
   }, {
     text: '统计',
     url: '/count',
-    icon: 'icon-count'
-  }, {
-    text: '关于',
-    url: '/about',
-    icon: 'icon-about'
+    icon: 'icon-count',
+    sub: [ {
+      text: '相册列表',
+      url: '/photos/list'
+    }, {
+      text: '上传图片',
+      url: '/photos/add'
+    }]
   }],
   depart: [{
     text: '设计制作部',
