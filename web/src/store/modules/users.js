@@ -56,20 +56,33 @@ const mutations = {
     })
   },
   deleteuser (state, This) {
-    const id = This.edit.id
-    axios.get(config.server + 'users/delete/' + id)
-    .then(function (res) {
-      if (res) {
-        This.closeModal('modal_delete')
-        This.$message({
-          message: '恭喜，删除' + id + '成功！',
-          type: 'success'
-        })
+    console.log(This)
+    This.closeModal('modal_deletes')
+    This.closeModal('modal_delete')
+    for (const item in This.delete) {
+      const id = This.delete[item].id
+      for (const item in state.UserList) {
+        if (state.UserList[item].id === id) {
+          for (const i in state.UserList) {
+            if (state.UserList[i] === state.UserList[item]) {
+              state.UserList.splice(i, 1)
+            }
+          }
+        }
       }
-    })
-    .catch(function (error) {
-      console.log(error)
-    })
+      axios.get(config.server + 'users/delete/' + id)
+      .then(function (res) {
+        if (res) {
+          This.$message({
+            message: '恭喜，删除' + id + '成功！',
+            type: 'success'
+          })
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+    }
   },
   adduser (state, This) {
     const name = This.add.name

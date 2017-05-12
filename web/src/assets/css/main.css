@@ -17,6 +17,7 @@ body{margin:0;height:100%;}
 .form th{font-weight:normal;text-align:right;color:#333;}
 .form td{color:#666;height:40px;}
 .text-btn{font-size:14px;color:#ED625C;cursor: pointer;}
+.c-red{color:#E64C65;}
 
 ::-webkit-scrollbar
 {

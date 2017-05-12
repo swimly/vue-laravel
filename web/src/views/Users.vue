@@ -100,7 +100,7 @@
     </div>
     <div class="row w paging">
       <li class="col v-m">
-        <el-button type="primary" size="small" :disabled="multipleSelection.length === 0">删除所选</el-button>
+        <el-button type="primary" size="small" :disabled="multipleSelection.length === 0" @click="handleDeletes()">删除所选</el-button>
         选中<span style="color:#f00;padding:0 5px;">{{multipleSelection.length}}</span>条
       </li>
       <li class="col v-m t-r">
@@ -119,6 +119,13 @@
         您确认要删除此用户？该操作不可恢复！
         <div slot="footer">
             <ui-button color="primary" @click="handleDeleteOk()">确认</ui-button>
+            <ui-button @click="closeModal('modal_delete')">取消</ui-button>
+        </div>
+    </ui-modal>
+    <ui-modal ref="modal_deletes" title="确认删除">
+        您确认要删除这<span class="c-red" style="font-size:18px;padding:0 5px;">{{multipleSelection.length}}</span>个用户？该操作不可恢复！
+        <div slot="footer">
+            <ui-button color="primary" @click="handleDeletesOk()">确认</ui-button>
             <ui-button @click="closeModal('modal_delete')">取消</ui-button>
         </div>
     </ui-modal>
@@ -368,6 +375,7 @@
         multipleSelection: [],
         currentPage: 1,
         edit: {},
+        delete: [],
         depart: config.depart,
         editSucces: true,
         add: config.userFields,
@@ -401,10 +409,16 @@
       },
       handleDelete (index, row) {
         this.openModal('modal_delete')
-        this.edit = row
-        console.log(row)
+        this.delete.push(row)
+        console.log(this.delete)
+      },
+      handleDeletes () {
+        this.openModal('modal_deletes')
       },
       handleDeleteOk () {
+        this.deleteuser(this)
+      },
+      handleDeletesOk () {
         this.deleteuser(this)
       },
       handleEdit (index, row) {
@@ -435,7 +449,7 @@
       },
       handleSelectionChange (val) {
         this.multipleSelection = val
-        console.log(this.multipleSelection)
+        this.delete = val
       },
       openModal (ref) {
         this.$refs[ref].open()
