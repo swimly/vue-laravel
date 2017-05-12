@@ -11,7 +11,6 @@ const getters = {
 const mutations = {
   getuserlist (state, This) {
     const param = This.search === '' ? {pageSize: This.pageSize, page: This.currentPage} : {pageSize: This.pageSize, page: This.currentPage, name: This.search}
-    console.log(param)
     axios.get(config.server + 'users/paging', {
       params: param
     })
@@ -22,7 +21,7 @@ const mutations = {
       //   offset: This.height - 20,
       //   type: 'success'
       // })
-      // console.log(res.data)
+      console.log(res.data)
       This.total = res.data.total
       state.UserList = res.data.data
     })
@@ -97,6 +96,7 @@ const mutations = {
           type: 'success'
         })
         This.closeModal('modal_add')
+        This.getuserlist(This)
       }
     })
     .catch(function (error) {

@@ -387,13 +387,13 @@
       this.getuserlist(this)   // 获取用户列表
     },
     mounted () {
-      // const This = this
+      const This = this
       this.height = document.querySelector('.table-content').clientHeight
-      // document.body.addEventListener('keyup', function (e) {
-      //   if (e.keyCode === 13) {
-      //     This.setuserinfo(This)
-      //   }
-      // })
+      document.body.addEventListener('keyup', function (e) {
+        if (e.keyCode === 13) {
+          This.adduser(This)
+        }
+      })
     },
     computed: {
       ...mapGetters({
